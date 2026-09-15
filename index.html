@@ -73,7 +73,8 @@
     .intro-center { position:relative; z-index:2; }
     .intro .hi { display:block; font-size:clamp(1.6rem,4vw,2.6rem); color:var(--coral); transform:rotate(-4deg); margin-bottom:-6px; }
     .intro-name { font-size:clamp(3.2rem,15vw,12rem); font-weight:800; letter-spacing:-0.045em; line-height:.9;
-      background:linear-gradient(120deg,#1d1d1f,#1d1d1f); }
+      background:linear-gradient(100deg,var(--sky),var(--purple) 48%,var(--coral) 92%);
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
     .intro .cue { display:block; margin-top:22px; font-size:clamp(1.3rem,3vw,2rem); color:var(--ink-dim); }
     .intro-anim { opacity:0; transform:translateY(30px); animation:introIn 1s var(--ease) forwards; }
     .intro-anim.d1{animation-delay:.1s} .intro-anim.d2{animation-delay:.28s} .intro-anim.d3{animation-delay:.5s}
@@ -117,6 +118,10 @@
     .soft { background:var(--grey); }
     .eyebrow-lbl { font-family:'Caveat',cursive; font-size:1.5rem; font-weight:700; color:var(--blue); margin-bottom:4px; transform:rotate(-1.5deg); display:inline-block; }
     .dark .eyebrow-lbl { color:#5eb0ff; }
+    #about .eyebrow-lbl{color:var(--coral)} #writing .eyebrow-lbl{color:var(--purple)}
+    #casestudies .eyebrow-lbl{color:var(--green)} #webinars .eyebrow-lbl{color:var(--sky)}
+    #campaigns .eyebrow-lbl{color:var(--coral)} #hobbies .eyebrow-lbl{color:var(--purple)}
+    #experience .eyebrow-lbl{color:var(--green)} #contact .eyebrow-lbl{color:var(--sky)}
     h2 { font-size:clamp(1.7rem,4vw,2.5rem); font-weight:700; letter-spacing:-0.03em; line-height:1.1; margin-bottom:18px; }
     .lede { font-size:clamp(1.05rem,2.2vw,1.4rem); color:var(--ink-dim); max-width:54ch; }
     .dark .lede { color:#a1a1a6; }
@@ -165,14 +170,15 @@
     .li-embed { width:100%; height:560px; border:1px solid var(--line); border-radius:14px; background:#fff; }
 
     /* HOBBIES */
-    .hobbies { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:8px; }
-    @media (max-width:720px){ .hobbies{grid-template-columns:1fr} }
-    .hobby { background:var(--white); border:2px dashed var(--line); border-radius:20px; padding:30px 26px; text-align:center;
+    .hobbies { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:8px; }
+    @media (max-width:860px){ .hobbies{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:460px){ .hobbies{grid-template-columns:1fr} }
+    .hobby { background:var(--white); border:2px dashed var(--line); border-radius:20px; padding:28px 20px; text-align:center;
       transition:transform .35s var(--ease), border-color .3s; }
     .hobby:hover { transform:translateY(-6px) rotate(1deg); border-color:var(--coral); }
-    .hobby svg { width:64px; height:64px; margin:0 auto 14px; }
-    .hobby h3 { font-family:'Caveat',cursive; font-size:1.9rem; font-weight:700; margin-bottom:4px; }
-    .hobby p { color:var(--ink-dim); font-size:.98rem; }
+    .hobby svg { width:56px; height:56px; margin:0 auto 14px; }
+    .hobby h3 { font-family:'Caveat',cursive; font-size:1.85rem; font-weight:700; margin-bottom:4px; }
+    .hobby p { color:var(--ink-dim); font-size:.95rem; }
 
     .timeline { max-width:820px; }
     .job { padding:28px 0; border-top:1px solid var(--line); }
@@ -199,6 +205,7 @@
 
     .up { opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
     .up.in { opacity:1; transform:none; }
+    @media (max-width:600px){ .dood{display:none} }
     @media (prefers-reduced-motion:reduce){ *{animation:none!important} .up{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} .intro{height:auto} .intro-pin{position:relative;height:auto;padding:120px 22px} }
   </style>
 </head>
@@ -273,7 +280,7 @@
   <div class="worked">
     <div class="lbl hand up">a few places I've made things</div>
     <div class="brands up">
-      <span>Stitchflow</span><span>Zoho</span><span>ManageEngine</span><span>Zoho Cliq</span>
+      <span>Stitchflow</span><span>Zoho</span><span>ManageEngine</span>
     </div>
   </div>
 
@@ -300,6 +307,7 @@
   <!-- STATS -->
   <section class="pad dark">
     <div class="wrap">
+      <span class="dood para" style="top:34px;right:28px;color:var(--coral)" data-speed="0.06"><span class="floaty b"><svg class="crayon" width="40" height="40" viewBox="0 0 24 24"><path d="M12 21 C12 21 4 15 4 9 A4 4 0 0 1 12 6.5 A4 4 0 0 1 20 9 C20 15 12 21 12 21 Z" fill="currentColor"/></svg></span></span>
       <p class="eyebrow-lbl up">by the numbers</p>
       <h2 class="up" style="margin-bottom:44px;">Work that moves metrics.</h2>
       <div class="specs">
@@ -316,6 +324,7 @@
   <!-- WRITING -->
   <section class="pad" id="writing">
     <div class="wrap">
+      <span class="dood para" style="top:30px;right:24px;color:var(--yellow)" data-speed="-0.05"><span class="floaty"><svg class="crayon" width="42" height="42" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
       <div class="sec-head">
         <p class="eyebrow-lbl up">selected writing</p>
         <h2 class="up">Published work you can read.</h2>
@@ -340,8 +349,37 @@
     </div>
   </section>
 
+  <!-- CASE STUDIES -->
+  <section class="pad soft" id="casestudies">
+    <div class="wrap">
+      <span class="dood para" style="top:34px;right:26px;color:var(--green)" data-speed="-0.05"><span class="floaty b"><svg class="crayon" width="46" height="46" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
+      <div class="sec-head">
+        <p class="eyebrow-lbl up">case studies</p>
+        <h2 class="up">Customer stories, from real interviews.</h2>
+        <p class="lede up">I sat down with customers and wrote up their Zoho Cliq success stories.</p>
+      </div>
+      <div class="cards">
+        <a class="card up" href="https://www.zoho.com/cliq/customers/starmark-software.html" target="_blank" rel="noopener">
+          <div class="pub">Starmark Software</div>
+          <div class="desc">Scaling collaboration across a 1,000+ employee software and consulting firm.</div>
+          <div class="go">Read case study ↗</div>
+        </a>
+        <a class="card up" href="https://www.zoho.com/cliq/customers/fhrm.html" target="_blank" rel="noopener">
+          <div class="pub">FHRM</div>
+          <div class="desc">How a medical billing and coding firm boosted team productivity.</div>
+          <div class="go">Read case study ↗</div>
+        </a>
+        <a class="card up" href="https://www.zoho.com/cliq/customers/teameverest.html" target="_blank" rel="noopener">
+          <div class="pub">Team Everest</div>
+          <div class="desc">How a youth-run education nonprofit streamlined its teams.</div>
+          <div class="go">Read case study ↗</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- WEBINARS -->
-  <section class="pad soft" id="webinars">
+  <section class="pad" id="webinars">
     <div class="wrap">
       <span class="dood para" style="top:40px;left:20px;color:var(--sky)" data-speed="-0.06"><span class="floaty c"><svg class="crayon" width="60" height="34" viewBox="0 0 40 20"><path d="M2 12 q6 -12 12 -2 t12 -2 t12 -2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></span>
       <div class="sec-head">
@@ -362,6 +400,7 @@
   <!-- CREATIVE -->
   <section class="pad dark" id="creative">
     <div class="wrap">
+      <span class="dood para" style="top:30px;left:24px;color:var(--yellow)" data-speed="0.05"><span class="floaty c"><svg class="crayon" width="42" height="42" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
       <div class="sec-head">
         <p class="eyebrow-lbl up">creative</p>
         <h2 class="up">Short-form video that makes B2B fun.</h2>
@@ -378,6 +417,7 @@
   <!-- SOCIAL & CAMPAIGNS -->
   <section class="pad" id="campaigns">
     <div class="wrap">
+      <span class="dood para" style="top:30px;right:26px;color:var(--pink)" data-speed="-0.05"><span class="floaty"><svg class="crayon" width="44" height="44" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
       <div class="sec-head">
         <p class="eyebrow-lbl up">social &amp; campaigns</p>
         <h2 class="up">Brand and product videos on LinkedIn.</h2>
@@ -400,7 +440,7 @@
       <div class="sec-head">
         <p class="eyebrow-lbl up">off the clock</p>
         <h2 class="up">When I'm not at work…</h2>
-        <p class="lede up">you'll find me painting, cooking new recipes, or hitting the gym.</p>
+        <p class="lede up">you'll find me painting, cooking new recipes, gaming, or hitting the gym.</p>
       </div>
       <div class="hobbies">
         <div class="hobby up">
@@ -418,6 +458,11 @@
           <h3>Gym</h3>
           <p>Where I go to reset and earn the cooking experiments.</p>
         </div>
+        <div class="hobby up">
+          <svg class="crayon" viewBox="0 0 64 64" style="color:var(--purple)"><path d="M18 24h28a11 11 0 0 1 11 11v2.5a7.5 7.5 0 0 1-14 3.2l-1.8-3H22.8l-1.8 3a7.5 7.5 0 0 1-14-3.2V35a11 11 0 0 1 11-11Z" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M19 32v7M15.5 35.5h7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="43" cy="33" r="2" fill="var(--coral)"/><circle cx="48" cy="38" r="2" fill="var(--yellow)"/></svg>
+          <h3>Gaming</h3>
+          <p>Unwinding with a good game (and a little competitive rage).</p>
+        </div>
       </div>
     </div>
   </section>
@@ -425,6 +470,7 @@
   <!-- EXPERIENCE -->
   <section class="pad" id="experience">
     <div class="wrap">
+      <span class="dood para" style="top:30px;right:24px;color:var(--sky)" data-speed="-0.05"><span class="floaty"><svg class="crayon" width="44" height="44" viewBox="0 0 24 24"><path d="M15 12 a1.8 1.8 0 1 0 -1.8 1.8 a4.5 4.5 0 1 0 4.5 -4.5 a7.5 7.5 0 1 0 -7.7 7.4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span></span>
       <div class="sec-head">
         <p class="eyebrow-lbl up">experience</p>
         <h2 class="up">Where I've worked.</h2>
