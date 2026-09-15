@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jane Cynthia S — Content &amp; Product Marketing</title>
-  <meta name="description" content="Jane Cynthia S — content and product marketing specialist. B2B SaaS go-to-market, executive branding, webinars, and creative short-form video." />
+  <meta name="description" content="Jane Cynthia S — content and product marketing specialist. B2B SaaS go-to-market, executive branding, webinars, website content, and creative short-form video." />
   <meta name="author" content="Jane Cynthia S" />
   <meta property="og:title" content="Jane Cynthia S — Content &amp; Product Marketing" />
   <meta property="og:description" content="B2B SaaS content and product marketing that drives pipeline — plus webinars and creative video." />
@@ -42,6 +42,16 @@
       font-size:1rem; padding:11px 22px; border-radius:980px; transition:background .2s ease, transform .2s ease; }
     .btn:hover { background:var(--blue-hi); transform:translateY(-2px); }
 
+    /* SCROLL PROGRESS + CURSOR */
+    .progress { position:fixed; top:0; left:0; height:3px; width:0; z-index:300;
+      background:linear-gradient(90deg,var(--sky),var(--purple),var(--coral)); }
+    .cursor { position:fixed; left:0; top:0; width:32px; height:32px; border:1.6px solid rgba(0,113,227,.55);
+      border-radius:50%; transform:translate(-50%,-50%); pointer-events:none; z-index:400; opacity:0;
+      transition:width .22s var(--ease), height .22s var(--ease), background .22s, border-color .22s, opacity .3s; }
+    .cursor.on { opacity:1; }
+    .cursor.big { width:58px; height:58px; background:rgba(185,128,240,.12); border-color:var(--purple); }
+    @media (hover:none),(pointer:coarse){ .cursor{display:none} }
+
     /* DOODLES */
     .dood { position:absolute; pointer-events:none; z-index:0; }
     .dood svg { display:block; }
@@ -49,8 +59,12 @@
     .floaty.b { animation-duration:7.5s; animation-delay:-2s; }
     .floaty.c { animation-duration:5.5s; animation-delay:-1s; }
     @keyframes floaty { 0%,100%{transform:translateY(0) rotate(-4deg)} 50%{transform:translateY(-16px) rotate(5deg)} }
-    .squiggle { display:block; margin-top:6px; color:var(--coral); }
     .crayon { filter:url(#crayon); }
+
+    /* drawn squiggle under headings */
+    .squig { display:block; margin-top:2px; color:var(--coral); }
+    .squig .sp { stroke-dasharray:240; stroke-dashoffset:240; transition:stroke-dashoffset 1.1s var(--ease) .15s; }
+    .squig.in .sp { stroke-dashoffset:0; }
 
     /* NAV */
     nav { position:fixed; top:0; left:0; right:0; z-index:100; height:var(--nav-h);
@@ -61,15 +75,14 @@
     .nav-inner { max-width:1024px; margin:0 auto; height:100%; padding:0 22px; display:flex; align-items:center; justify-content:space-between; }
     .brand { font-size:1.02rem; font-weight:600; letter-spacing:-0.02em; }
     .nav-links { display:flex; gap:22px; }
-    .nav-links a { font-size:.82rem; opacity:.8; transition:opacity .2s; }
+    .nav-links a { font-size:.82rem; opacity:.8; transition:opacity .2s, color .2s; }
     .nav-links a:hover { opacity:1; color:var(--blue); }
     @media (max-width:860px){ .nav-links{gap:14px} .nav-links a{font-size:.74rem} }
     @media (max-width:560px){ .nav-links a:nth-child(n+4){display:none} }
 
     /* INTRO REVEAL */
     .intro { height:170vh; position:relative; z-index:1; }
-    .intro-pin { position:sticky; top:0; height:100vh; display:flex; align-items:center; justify-content:center;
-      overflow:hidden; text-align:center; }
+    .intro-pin { position:sticky; top:0; height:100vh; display:flex; align-items:center; justify-content:center; overflow:hidden; text-align:center; }
     .intro-center { position:relative; z-index:2; }
     .intro .hi { display:block; font-size:clamp(1.6rem,4vw,2.6rem); color:var(--coral); transform:rotate(-4deg); margin-bottom:-6px; }
     .intro-name { font-size:clamp(3.2rem,15vw,12rem); font-weight:800; letter-spacing:-0.045em; line-height:.9;
@@ -86,23 +99,22 @@
     .hero { padding:40px 22px 26px; text-align:center; position:relative; z-index:1; background:var(--white); }
     .badge { display:inline-flex; align-items:center; gap:7px; font-size:1.25rem; color:var(--green);
       border:2px solid var(--green); border-radius:980px; padding:2px 16px 4px; margin-bottom:20px; transform:rotate(-1.5deg); }
-    .badge .dot { width:8px; height:8px; border-radius:50%; background:var(--green); }
+    .badge .dot { width:8px; height:8px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
     .avatar { position:relative; width:132px; height:132px; margin:0 auto 20px; border-radius:50%;
-      overflow:hidden; background:linear-gradient(135deg,#0071e3,#a24bf5); display:flex; align-items:center;
-      justify-content:center; box-shadow:0 14px 40px rgba(0,0,0,.18); }
+      overflow:hidden; background:linear-gradient(135deg,#0071e3,#a24bf5); display:flex; align-items:center; justify-content:center; box-shadow:0 14px 40px rgba(0,0,0,.18); }
     .avatar .mono { color:#fff; font-size:2.7rem; font-weight:700; }
     .avatar img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
     .hero .role { font-size:clamp(1.4rem,3.4vw,2rem); font-weight:700; letter-spacing:-0.02em; }
     .loc-line { margin-top:8px; font-size:.95rem; color:var(--ink-dim); display:inline-flex; align-items:center; gap:5px; }
     .loc-line svg { width:14px; height:14px; fill:var(--ink-dim); }
-    .hero .tag { margin:14px auto 0; max-width:46ch; font-size:clamp(1rem,2vw,1.2rem); color:var(--ink-dim); }
+    .hero .tag { margin:14px auto 0; max-width:48ch; font-size:clamp(1rem,2vw,1.2rem); color:var(--ink-dim); }
     .hero .cta { margin-top:24px; display:flex; gap:18px; justify-content:center; align-items:center; flex-wrap:wrap; }
 
     /* MARQUEE */
-    .marquee { border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0;
-      overflow:hidden; background:var(--white); }
-    .mtrack { display:flex; gap:34px; white-space:nowrap; width:max-content; animation:scrollx 34s linear infinite; }
-    .mtrack span { font-size:1.05rem; font-weight:600; color:var(--ink); opacity:.75; letter-spacing:-0.01em; }
+    .marquee { border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:16px 0; overflow:hidden; background:var(--white); }
+    .mtrack { display:flex; gap:34px; white-space:nowrap; width:max-content; animation:scrollx 36s linear infinite; }
+    .mtrack span { font-size:1.05rem; font-weight:600; color:var(--ink); opacity:.75; }
     .mtrack .st { color:var(--coral); }
     @keyframes scrollx { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
@@ -116,70 +128,84 @@
     section.pad { padding:78px 0; position:relative; z-index:1; overflow:hidden; }
     .dark { background:var(--black); color:var(--white); }
     .soft { background:var(--grey); }
-    .eyebrow-lbl { font-family:'Caveat',cursive; font-size:1.5rem; font-weight:700; color:var(--blue); margin-bottom:4px; transform:rotate(-1.5deg); display:inline-block; }
+    .eyebrow-lbl { font-family:'Caveat',cursive; font-size:1.5rem; font-weight:700; color:var(--blue); margin-bottom:2px; transform:rotate(-1.5deg); display:inline-block; }
     .dark .eyebrow-lbl { color:#5eb0ff; }
     #about .eyebrow-lbl{color:var(--coral)} #writing .eyebrow-lbl{color:var(--purple)}
     #casestudies .eyebrow-lbl{color:var(--green)} #webinars .eyebrow-lbl{color:var(--sky)}
-    #campaigns .eyebrow-lbl{color:var(--coral)} #hobbies .eyebrow-lbl{color:var(--purple)}
-    #experience .eyebrow-lbl{color:var(--green)} #contact .eyebrow-lbl{color:var(--sky)}
-    h2 { font-size:clamp(1.7rem,4vw,2.5rem); font-weight:700; letter-spacing:-0.03em; line-height:1.1; margin-bottom:18px; }
-    .lede { font-size:clamp(1.05rem,2.2vw,1.4rem); color:var(--ink-dim); max-width:54ch; }
+    #hobbies .eyebrow-lbl{color:var(--purple)} #experience .eyebrow-lbl{color:var(--green)} #contact .eyebrow-lbl{color:var(--sky)}
+    h2 { font-size:clamp(1.7rem,4vw,2.5rem); font-weight:700; letter-spacing:-0.03em; line-height:1.1; margin-bottom:6px; }
+    .lede { font-size:clamp(1.05rem,2.2vw,1.4rem); color:var(--ink-dim); max-width:54ch; margin-top:14px; }
     .dark .lede { color:#a1a1a6; }
     .sec-head { margin-bottom:34px; }
 
     .about p { font-size:1.15rem; color:var(--ink-dim); max-width:60ch; }
     .about strong { color:var(--ink); font-weight:600; }
 
+    /* STATS */
     .specs { display:grid; grid-template-columns:repeat(3,1fr); gap:34px 20px; }
     @media (max-width:640px){ .specs{grid-template-columns:repeat(2,1fr)} }
     .spec .n { font-size:clamp(2.3rem,5.5vw,3.6rem); font-weight:700; letter-spacing:-0.03em; line-height:1;
       background:linear-gradient(120deg,#2997ff,#a24bf5); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
     .spec .l { color:#a1a1a6; font-size:.95rem; margin-top:10px; max-width:22ch; }
 
+    /* CARDS */
     .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
     @media (max-width:760px){ .cards{grid-template-columns:1fr} }
-    .card { display:block; background:var(--white); border:1px solid var(--line); border-radius:18px; padding:26px;
-      transition:transform .35s var(--ease), box-shadow .35s var(--ease), border-color .2s; }
-    .card:hover { transform:translateY(-6px) rotate(-.6deg); box-shadow:0 18px 44px rgba(0,0,0,.09); border-color:transparent; }
+    .card { position:relative; display:block; background:var(--white); border:1px solid var(--line); border-radius:18px;
+      padding:26px; overflow:hidden; transform-style:preserve-3d; will-change:transform;
+      transition:transform .3s var(--ease), box-shadow .35s var(--ease), border-color .2s; }
+    .card::before { content:""; position:absolute; top:0; left:0; right:0; height:5px; background:var(--acc,var(--blue)); opacity:.85; }
+    .card:hover { box-shadow:0 22px 50px rgba(0,0,0,.12); border-color:transparent; }
+    .card .logo { width:40px; height:40px; border-radius:10px; margin-bottom:14px; box-shadow:0 2px 10px rgba(0,0,0,.12); background:#fff; }
     .card .pub { font-size:1.2rem; font-weight:600; letter-spacing:-0.02em; margin-bottom:6px; }
     .card .desc { color:var(--ink-dim); font-size:.98rem; margin-bottom:16px; }
     .card .go { color:var(--blue); font-size:.95rem; font-weight:500; }
+    .card .arr { display:inline-block; transition:transform .25s var(--ease); }
+    .card:hover .arr { transform:translate(4px,-4px); }
 
+    /* VIDEOS */
     .videos { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
     @media (max-width:760px){ .videos{grid-template-columns:1fr} }
     .shorts { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; max-width:840px; }
     @media (max-width:760px){ .shorts{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:460px){ .shorts{grid-template-columns:1fr; max-width:300px; margin:0 auto} }
-    .frame { position:relative; width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:#000;
-      box-shadow:0 12px 34px rgba(0,0,0,.16); }
+    .frame { position:relative; width:100%; aspect-ratio:16/9; border-radius:16px; overflow:hidden; background:#000; box-shadow:0 12px 34px rgba(0,0,0,.16); }
     .short .frame { aspect-ratio:9/16; }
     .frame iframe, .frame .play-btn { position:absolute; inset:0; width:100%; height:100%; border:0; }
     .play-btn { padding:0; margin:0; cursor:pointer; background:#000; display:block; }
     .play-btn .thumb { width:100%; height:100%; object-fit:cover; opacity:.94; transition:opacity .3s, transform .6s var(--ease); }
-    .play-btn:hover .thumb { opacity:1; transform:scale(1.04); }
-    .play-btn .pbtn { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60px; height:60px;
-      border-radius:50%; background:rgba(20,20,20,.62); display:flex; align-items:center; justify-content:center; transition:background .2s, transform .2s var(--ease); }
-    .play-btn:hover .pbtn { background:var(--blue); transform:translate(-50%,-50%) scale(1.08); }
+    .play-btn:hover .thumb { opacity:1; transform:scale(1.05); }
+    .play-btn .pbtn { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:60px; height:60px; border-radius:50%;
+      background:rgba(20,20,20,.62); display:flex; align-items:center; justify-content:center; transition:background .2s, transform .2s var(--ease); }
+    .play-btn:hover .pbtn { background:var(--blue); transform:translate(-50%,-50%) scale(1.1); }
     .play-btn .pbtn::before { content:""; border-style:solid; border-width:9px 0 9px 15px; border-color:transparent transparent transparent #fff; margin-left:4px; }
     figcaption { margin-top:10px; font-size:.98rem; color:var(--ink); font-weight:500; }
     .short figcaption { font-size:.9rem; }
     .dark figcaption { color:#f5f5f7; }
-
+    .vid-sub { margin:46px 0 18px; font-family:'Caveat',cursive; font-size:1.7rem; font-weight:700; color:#f5f5f7; }
     .li-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:22px; }
     .li-card figcaption { margin-bottom:10px; margin-top:0; }
-    .li-embed { width:100%; height:560px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+    .li-embed { width:100%; height:560px; border:0; border-radius:14px; background:#fff; }
 
     /* HOBBIES */
     .hobbies { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:8px; }
     @media (max-width:860px){ .hobbies{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:460px){ .hobbies{grid-template-columns:1fr} }
-    .hobby { background:var(--white); border:2px dashed var(--line); border-radius:20px; padding:28px 20px; text-align:center;
-      transition:transform .35s var(--ease), border-color .3s; }
-    .hobby:hover { transform:translateY(-6px) rotate(1deg); border-color:var(--coral); }
+    .hobby { position:relative; background:var(--white); border:2px dashed var(--line); border-radius:20px; padding:28px 20px; text-align:center;
+      transform-style:preserve-3d; will-change:transform; transition:transform .3s var(--ease), border-color .3s; }
+    .hobby:hover { border-color:var(--coral); }
     .hobby svg { width:56px; height:56px; margin:0 auto 14px; }
     .hobby h3 { font-family:'Caveat',cursive; font-size:1.85rem; font-weight:700; margin-bottom:4px; }
     .hobby p { color:var(--ink-dim); font-size:.95rem; }
 
+    /* stagger */
+    .cards .card:nth-child(2),.hobbies .hobby:nth-child(2),.videos .video:nth-child(2),.shorts .short:nth-child(2),.li-grid .li-card:nth-child(2),.specs .spec:nth-child(2){transition-delay:.06s}
+    .cards .card:nth-child(3),.hobbies .hobby:nth-child(3),.videos .video:nth-child(3),.shorts .short:nth-child(3),.li-grid .li-card:nth-child(3),.specs .spec:nth-child(3){transition-delay:.12s}
+    .hobbies .hobby:nth-child(4),.videos .video:nth-child(4),.li-grid .li-card:nth-child(4),.specs .spec:nth-child(4){transition-delay:.18s}
+    .videos .video:nth-child(5),.li-grid .li-card:nth-child(5),.specs .spec:nth-child(5){transition-delay:.24s}
+    .specs .spec:nth-child(6){transition-delay:.30s}
+
+    /* EXPERIENCE */
     .timeline { max-width:820px; }
     .job { padding:28px 0; border-top:1px solid var(--line); }
     .job:last-child { border-bottom:1px solid var(--line); }
@@ -191,12 +217,13 @@
     .job li { color:var(--ink-dim); font-size:1.02rem; padding-left:20px; position:relative; margin-bottom:8px; }
     .job li::before { content:"—"; position:absolute; left:0; color:var(--line); }
 
+    /* CONTACT */
     .contact { text-align:center; }
-    .contact h2 { max-width:20ch; margin:0 auto 16px; }
-    .contact .lede { margin:0 auto 30px; }
+    .contact h2 { max-width:22ch; margin:0 auto 6px; }
+    .contact .lede { margin:14px auto 30px; }
     .contact .cta { display:flex; gap:18px; justify-content:center; align-items:center; flex-wrap:wrap; }
     .socials { margin-top:34px; display:flex; gap:24px; justify-content:center; flex-wrap:wrap; }
-    .socials a { color:var(--ink-dim); font-size:.98rem; }
+    .socials a { color:var(--ink-dim); font-size:.98rem; transition:color .2s; }
     .socials a:hover { color:var(--blue); }
 
     footer { background:var(--grey); padding:30px 0; position:relative; z-index:1; }
@@ -206,17 +233,16 @@
     .up { opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
     .up.in { opacity:1; transform:none; }
     @media (max-width:600px){ .dood{display:none} }
-    @media (prefers-reduced-motion:reduce){ *{animation:none!important} .up{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} .intro{height:auto} .intro-pin{position:relative;height:auto;padding:120px 22px} }
+    @media (prefers-reduced-motion:reduce){ *{animation:none!important} .up{opacity:1;transform:none;transition:none} .squig .sp{stroke-dashoffset:0} html{scroll-behavior:auto} .intro{height:auto} .intro-pin{position:relative;height:auto;padding:120px 22px} }
   </style>
 </head>
 <body>
+  <div class="progress" id="progress"></div>
 
-  <!-- CRAYON FILTER (gives strokes a hand-drawn wobble) -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <filter id="crayon"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/></filter>
-    </defs>
-  </svg>
+  <!-- CRAYON FILTER -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <filter id="crayon"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/></filter>
+  </defs></svg>
 
   <!-- NAV -->
   <nav id="nav">
@@ -225,14 +251,14 @@
       <div class="nav-links">
         <a href="#writing">Writing</a>
         <a href="#webinars">Webinars</a>
-        <a href="#creative">Creative</a>
+        <a href="#creative">Video</a>
         <a href="#hobbies">Life</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- INTRO REVEAL -->
+  <!-- INTRO -->
   <section class="intro" id="top">
     <div class="intro-pin" id="introPin">
       <span class="dood para dpop" style="top:16%;left:12%;color:var(--yellow)" data-speed="0.10"><span class="floaty"><svg class="crayon" width="46" height="46" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
@@ -251,15 +277,9 @@
   <!-- HERO -->
   <header class="hero">
     <span class="badge hand"><span class="dot"></span> open to work</span>
-    <div class="avatar">
-      <span class="mono">JC</span>
-      <img src="images/jane.jpg" alt="Jane Cynthia S" onerror="this.remove()" />
-    </div>
+    <div class="avatar"><span class="mono">JC</span><img src="images/jane.jpg" alt="Jane Cynthia S" onerror="this.remove()" /></div>
     <div class="role">Content &amp; Product Marketing Specialist</div>
-    <div class="loc-line">
-      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>
-      Chennai, India
-    </div>
+    <div class="loc-line"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6.5a2.5 2.5 0 010 5z"/></svg>Chennai, India</div>
     <p class="tag">4+ years turning B2B SaaS positioning into pipeline: content engines, executive brands, and AI-powered content systems.</p>
     <div class="cta">
       <a href="#contact" class="btn">Get in touch</a>
@@ -271,17 +291,15 @@
   <!-- MARQUEE -->
   <div class="marquee" aria-hidden="true">
     <div class="mtrack">
-      <span>Positioning</span><span class="st">✦</span><span>Brand Voice</span><span class="st">✦</span><span>Storytelling</span><span class="st">✦</span><span>Content Strategy</span><span class="st">✦</span><span>Thought Leadership</span><span class="st">✦</span><span>Go-to-Market</span><span class="st">✦</span><span>Demand Gen</span><span class="st">✦</span><span>Ghostwriting</span><span class="st">✦</span><span>Creative Video</span><span class="st">✦</span>
-      <span>Positioning</span><span class="st">✦</span><span>Brand Voice</span><span class="st">✦</span><span>Storytelling</span><span class="st">✦</span><span>Content Strategy</span><span class="st">✦</span><span>Thought Leadership</span><span class="st">✦</span><span>Go-to-Market</span><span class="st">✦</span><span>Demand Gen</span><span class="st">✦</span><span>Ghostwriting</span><span class="st">✦</span><span>Creative Video</span><span class="st">✦</span>
+      <span>Positioning</span><span class="st">✦</span><span>Brand Voice</span><span class="st">✦</span><span>Storytelling</span><span class="st">✦</span><span>Content Strategy</span><span class="st">✦</span><span>Website Copy</span><span class="st">✦</span><span>Thought Leadership</span><span class="st">✦</span><span>Go-to-Market</span><span class="st">✦</span><span>Demand Gen</span><span class="st">✦</span><span>Creative Video</span><span class="st">✦</span>
+      <span>Positioning</span><span class="st">✦</span><span>Brand Voice</span><span class="st">✦</span><span>Storytelling</span><span class="st">✦</span><span>Content Strategy</span><span class="st">✦</span><span>Website Copy</span><span class="st">✦</span><span>Thought Leadership</span><span class="st">✦</span><span>Go-to-Market</span><span class="st">✦</span><span>Demand Gen</span><span class="st">✦</span><span>Creative Video</span><span class="st">✦</span>
     </div>
   </div>
 
   <!-- WORKED WITH -->
   <div class="worked">
     <div class="lbl hand up">a few places I've made things</div>
-    <div class="brands up">
-      <span>Stitchflow</span><span>Zoho</span><span>ManageEngine</span>
-    </div>
+    <div class="brands up"><span>Stitchflow</span><span>Zoho</span><span>ManageEngine</span></div>
   </div>
 
   <!-- ABOUT -->
@@ -290,16 +308,17 @@
       <span class="dood para" style="top:30px;right:30px;color:var(--pink)" data-speed="-0.05"><span class="floaty"><svg class="crayon" width="52" height="52" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
       <p class="eyebrow-lbl up">about me</p>
       <h2 class="up">Marketing brain, maker's instinct.</h2>
-      <p class="up">
-        I'm a <strong>content and product marketer</strong> based in Chennai. I shape positioning and
-        messaging, build content programs that rank and convert, and grow founder brands from zero.
-        Lately I've been building <strong>AI systems</strong> that ghostwrite founder thought leadership in
-        each person's authentic voice and monitor social conversations at scale.
+      <svg class="squig up crayon" style="color:var(--coral)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      <p class="up" style="margin-top:16px;">
+        I'm a <strong>content and product marketer</strong> based in Chennai. I shape positioning and messaging,
+        build content programs that rank and convert, and grow founder brands from zero. Lately I've been building
+        <strong>AI systems</strong> that ghostwrite founder thought leadership in each person's authentic voice and
+        monitor social conversations at scale.
       </p>
       <p class="up" style="margin-top:16px;">
-        I love working <strong>across teams</strong> — I've partnered with product, sales, and design to ship
-        work that actually lands. And I care about making marketing worth <strong>reading, watching, and sharing</strong>,
-        whether that's a webinar, a case study, or a video that makes people laugh.
+        I love working <strong>across teams, top to bottom</strong> — partnering with product, sales, design, and
+        leadership to ship everything from blogs and case studies to <strong>full website content</strong>. Good
+        marketing should be worth <strong>reading, watching, and sharing</strong>.
       </p>
     </div>
   </section>
@@ -309,8 +328,9 @@
     <div class="wrap">
       <span class="dood para" style="top:34px;right:28px;color:var(--coral)" data-speed="0.06"><span class="floaty b"><svg class="crayon" width="40" height="40" viewBox="0 0 24 24"><path d="M12 21 C12 21 4 15 4 9 A4 4 0 0 1 12 6.5 A4 4 0 0 1 20 9 C20 15 12 21 12 21 Z" fill="currentColor"/></svg></span></span>
       <p class="eyebrow-lbl up">by the numbers</p>
-      <h2 class="up" style="margin-bottom:44px;">Work that moves metrics.</h2>
-      <div class="specs">
+      <h2 class="up">Work that moves metrics.</h2>
+      <svg class="squig up crayon" style="color:#5eb0ff" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      <div class="specs" style="margin-top:40px;">
         <div class="spec up"><div class="n" data-target="4"   data-suffix="+">4+</div><div class="l">Years in B2B SaaS</div></div>
         <div class="spec up"><div class="n" data-target="100" data-suffix="+">100+</div><div class="l">Long-form articles published</div></div>
         <div class="spec up"><div class="n" data-target="40"  data-suffix="%">40%</div><div class="l">Of inbound demo pipeline from content</div></div>
@@ -328,63 +348,39 @@
       <div class="sec-head">
         <p class="eyebrow-lbl up">selected writing</p>
         <h2 class="up">Published work you can read.</h2>
+        <svg class="squig up crayon" style="color:var(--purple)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
       </div>
       <div class="cards">
-        <a class="card up" href="https://www.stitchflow.com/blog/author/jane-cynthia-s" target="_blank" rel="noopener">
+        <a class="card tilt up" style="--acc:var(--sky)" href="https://www.stitchflow.com/blog/author/jane-cynthia-s" target="_blank" rel="noopener">
+          <img class="logo" src="images/logo-stitchflow.png" alt="Stitchflow logo" loading="lazy">
           <div class="pub">Stitchflow</div>
           <div class="desc">Long-form content on SaaS governance, IT operations, and access management.</div>
-          <div class="go">Read on Stitchflow ↗</div>
+          <div class="go">Read on Stitchflow <span class="arr">↗</span></div>
         </a>
-        <a class="card up" href="https://www.zoho.com/blog/author/janecynthia-sh" target="_blank" rel="noopener">
+        <a class="card tilt up" style="--acc:var(--coral)" href="https://www.zoho.com/blog/author/janecynthia-sh" target="_blank" rel="noopener">
+          <img class="logo" src="images/logo-zoho.png" alt="Zoho logo" loading="lazy">
           <div class="pub">Zoho</div>
           <div class="desc">B2B product blogs and customer stories across the Zoho suite.</div>
-          <div class="go">Read on Zoho ↗</div>
+          <div class="go">Read on Zoho <span class="arr">↗</span></div>
         </a>
-        <a class="card up" href="https://www.manageengine.com/analytics-plus/it-analytics-blogs/author/janecynthia" target="_blank" rel="noopener">
+        <a class="card tilt up" style="--acc:var(--green)" href="https://www.manageengine.com/analytics-plus/it-analytics-blogs/author/janecynthia" target="_blank" rel="noopener">
+          <img class="logo" src="images/logo-manageengine.png" alt="ManageEngine logo" loading="lazy">
           <div class="pub">ManageEngine</div>
           <div class="desc">IT and analytics content for Analytics Plus, from ebooks to competitive pieces.</div>
-          <div class="go">Read on ManageEngine ↗</div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CASE STUDIES -->
-  <section class="pad soft" id="casestudies">
-    <div class="wrap">
-      <span class="dood para" style="top:34px;right:26px;color:var(--green)" data-speed="-0.05"><span class="floaty b"><svg class="crayon" width="46" height="46" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
-      <div class="sec-head">
-        <p class="eyebrow-lbl up">case studies</p>
-        <h2 class="up">Customer stories, from real interviews.</h2>
-        <p class="lede up">I sat down with customers and wrote up their Zoho Cliq success stories.</p>
-      </div>
-      <div class="cards">
-        <a class="card up" href="https://www.zoho.com/cliq/customers/starmark-software.html" target="_blank" rel="noopener">
-          <div class="pub">Starmark Software</div>
-          <div class="desc">Scaling collaboration across a 1,000+ employee software and consulting firm.</div>
-          <div class="go">Read case study ↗</div>
-        </a>
-        <a class="card up" href="https://www.zoho.com/cliq/customers/fhrm.html" target="_blank" rel="noopener">
-          <div class="pub">FHRM</div>
-          <div class="desc">How a medical billing and coding firm boosted team productivity.</div>
-          <div class="go">Read case study ↗</div>
-        </a>
-        <a class="card up" href="https://www.zoho.com/cliq/customers/teameverest.html" target="_blank" rel="noopener">
-          <div class="pub">Team Everest</div>
-          <div class="desc">How a youth-run education nonprofit streamlined its teams.</div>
-          <div class="go">Read case study ↗</div>
+          <div class="go">Read on ManageEngine <span class="arr">↗</span></div>
         </a>
       </div>
     </div>
   </section>
 
   <!-- WEBINARS -->
-  <section class="pad" id="webinars">
+  <section class="pad soft" id="webinars">
     <div class="wrap">
       <span class="dood para" style="top:40px;left:20px;color:var(--sky)" data-speed="-0.06"><span class="floaty c"><svg class="crayon" width="60" height="34" viewBox="0 0 40 20"><path d="M2 12 q6 -12 12 -2 t12 -2 t12 -2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span></span>
       <div class="sec-head">
         <p class="eyebrow-lbl up">webinars &amp; talks</p>
         <h2 class="up">Product webinars I hosted and produced.</h2>
+        <svg class="squig up crayon" style="color:var(--sky)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
         <p class="lede up">A run of Zoho Cliq product webinars — launches, deep dives, and admin walkthroughs.</p>
       </div>
       <div class="videos">
@@ -397,13 +393,14 @@
     </div>
   </section>
 
-  <!-- CREATIVE -->
+  <!-- SHORT-FORM & SOCIAL VIDEO (shorts + LinkedIn together) -->
   <section class="pad dark" id="creative">
     <div class="wrap">
       <span class="dood para" style="top:30px;left:24px;color:var(--yellow)" data-speed="0.05"><span class="floaty c"><svg class="crayon" width="42" height="42" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
       <div class="sec-head">
-        <p class="eyebrow-lbl up">creative</p>
-        <h2 class="up">Short-form video that makes B2B fun.</h2>
+        <p class="eyebrow-lbl up">short-form video</p>
+        <h2 class="up">Made to be watched, and shared.</h2>
+        <svg class="squig up crayon" style="color:#5eb0ff" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
         <p class="lede up">IT humour and product storytelling I create — proof that B2B doesn't have to be boring.</p>
       </div>
       <div class="shorts">
@@ -411,24 +408,43 @@
         <figure class="short up"><div class="frame"><button class="play-btn" data-id="CcqqNKHA8SM" aria-label="Play: We audited IT costs"><img class="thumb" loading="lazy" src="https://i.ytimg.com/vi/CcqqNKHA8SM/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/CcqqNKHA8SM/hqdefault.jpg'" alt=""><span class="pbtn"></span></button></div><figcaption>We audited IT costs — guess who wasted the most 🤯</figcaption></figure>
         <figure class="short up"><div class="frame"><button class="play-btn" data-id="NRguptl85JM" aria-label="Play: When everyone wants SaaS access right meow"><img class="thumb" loading="lazy" src="https://i.ytimg.com/vi/NRguptl85JM/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/NRguptl85JM/hqdefault.jpg'" alt=""><span class="pbtn"></span></button></div><figcaption>When everyone wants SaaS access right MEOW 🐱</figcaption></figure>
       </div>
-    </div>
-  </section>
-
-  <!-- SOCIAL & CAMPAIGNS -->
-  <section class="pad" id="campaigns">
-    <div class="wrap">
-      <span class="dood para" style="top:30px;right:26px;color:var(--pink)" data-speed="-0.05"><span class="floaty"><svg class="crayon" width="44" height="44" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
-      <div class="sec-head">
-        <p class="eyebrow-lbl up">social &amp; campaigns</p>
-        <h2 class="up">Brand and product videos on LinkedIn.</h2>
-        <p class="lede up">Campaign and product videos I created for Stitchflow, Zoho SalesIQ, and Zoho Cliq.</p>
-      </div>
+      <h3 class="vid-sub up">…and campaign videos on LinkedIn</h3>
       <div class="li-grid">
         <figure class="li-card up"><figcaption>Stitchflow at Oktane25</figcaption><iframe class="li-embed" loading="lazy" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7373365232297103360" title="Stitchflow at Oktane25" allowfullscreen></iframe></figure>
         <figure class="li-card up"><figcaption>Zoho SalesIQ — real-time engagement</figcaption><iframe class="li-embed" loading="lazy" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7221837783030513665" title="Zoho SalesIQ real-time engagement" allowfullscreen></iframe></figure>
         <figure class="li-card up"><figcaption>Zoho Cliq — Productivity Day</figcaption><iframe class="li-embed" loading="lazy" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7209416210789068800" title="Zoho Cliq Productivity Day" allowfullscreen></iframe></figure>
         <figure class="li-card up"><figcaption>Zoho Cliq — meetings &amp; conferencing</figcaption><iframe class="li-embed" loading="lazy" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7156146304350380033" title="Zoho Cliq meetings and conferencing" allowfullscreen></iframe></figure>
         <figure class="li-card up"><figcaption>Zoho Cliq — AI collaboration</figcaption><iframe class="li-embed" loading="lazy" src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7120658330322108416" title="Zoho Cliq AI collaboration" allowfullscreen></iframe></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section class="pad" id="casestudies">
+    <div class="wrap">
+      <span class="dood para" style="top:34px;right:26px;color:var(--green)" data-speed="-0.05"><span class="floaty b"><svg class="crayon" width="46" height="46" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
+      <div class="sec-head">
+        <p class="eyebrow-lbl up">case studies</p>
+        <h2 class="up">Customer stories, from real interviews.</h2>
+        <svg class="squig up crayon" style="color:var(--green)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        <p class="lede up">I sat down with customers and wrote up their Zoho Cliq success stories.</p>
+      </div>
+      <div class="cards">
+        <a class="card tilt up" style="--acc:var(--sky)" href="https://www.zoho.com/cliq/customers/starmark-software.html" target="_blank" rel="noopener">
+          <div class="pub">Starmark Software</div>
+          <div class="desc">Scaling collaboration across a 1,000+ employee software and consulting firm.</div>
+          <div class="go">Read case study <span class="arr">↗</span></div>
+        </a>
+        <a class="card tilt up" style="--acc:var(--purple)" href="https://www.zoho.com/cliq/customers/fhrm.html" target="_blank" rel="noopener">
+          <div class="pub">FHRM</div>
+          <div class="desc">How a medical billing and coding firm boosted team productivity.</div>
+          <div class="go">Read case study <span class="arr">↗</span></div>
+        </a>
+        <a class="card tilt up" style="--acc:var(--coral)" href="https://www.zoho.com/cliq/customers/teameverest.html" target="_blank" rel="noopener">
+          <div class="pub">Team Everest</div>
+          <div class="desc">How a youth-run education nonprofit streamlined its teams.</div>
+          <div class="go">Read case study <span class="arr">↗</span></div>
+        </a>
       </div>
     </div>
   </section>
@@ -440,28 +456,25 @@
       <div class="sec-head">
         <p class="eyebrow-lbl up">off the clock</p>
         <h2 class="up">When I'm not at work…</h2>
+        <svg class="squig up crayon" style="color:var(--purple)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
         <p class="lede up">you'll find me painting, cooking new recipes, gaming, or hitting the gym.</p>
       </div>
       <div class="hobbies">
-        <div class="hobby up">
+        <div class="hobby tilt up">
           <svg class="crayon" viewBox="0 0 64 64" style="color:var(--coral)"><path d="M32 8C17 8 6 18 6 30c0 8 6 12 12 12 4 0 5-3 8-3 3 0 4 3 4 6 0 5 4 9 10 9 12 0 18-14 18-30C58 18 47 8 32 8Z" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="20" cy="26" r="2.6" fill="var(--sky)"/><circle cx="29" cy="18" r="2.6" fill="var(--yellow)"/><circle cx="41" cy="19" r="2.6" fill="var(--green)"/><circle cx="47" cy="30" r="2.6" fill="var(--purple)"/></svg>
-          <h3>Painting</h3>
-          <p>My favourite way to switch off — colour, canvas, no deadlines.</p>
+          <h3>Painting</h3><p>My favourite way to switch off — colour, canvas, no deadlines.</p>
         </div>
-        <div class="hobby up">
+        <div class="hobby tilt up">
           <svg class="crayon" viewBox="0 0 64 64" style="color:var(--green)"><path d="M12 30h40v13a9 9 0 0 1-9 9H21a9 9 0 0 1-9-9Z" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M8 30h48" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M6 26h6M52 26h6" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M24 20q-4-6 0-11M32 20q4-6 0-11M40 20q-4-6 0-11" fill="none" stroke="var(--coral)" stroke-width="2.2" stroke-linecap="round"/></svg>
-          <h3>Cooking</h3>
-          <p>Always chasing a new recipe (and occasionally nailing it).</p>
+          <h3>Cooking</h3><p>Always chasing a new recipe (and occasionally nailing it).</p>
         </div>
-        <div class="hobby up">
+        <div class="hobby tilt up">
           <svg class="crayon" viewBox="0 0 64 64" style="color:var(--sky)"><path d="M22 32h20" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><rect x="12" y="23" width="8" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.6"/><rect x="44" y="23" width="8" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.6"/><rect x="5" y="27" width="6" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/><rect x="53" y="27" width="6" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2.4"/></svg>
-          <h3>Gym</h3>
-          <p>Where I go to reset and earn the cooking experiments.</p>
+          <h3>Gym</h3><p>Where I go to reset and earn the cooking experiments.</p>
         </div>
-        <div class="hobby up">
+        <div class="hobby tilt up">
           <svg class="crayon" viewBox="0 0 64 64" style="color:var(--purple)"><path d="M18 24h28a11 11 0 0 1 11 11v2.5a7.5 7.5 0 0 1-14 3.2l-1.8-3H22.8l-1.8 3a7.5 7.5 0 0 1-14-3.2V35a11 11 0 0 1 11-11Z" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M19 32v7M15.5 35.5h7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="43" cy="33" r="2" fill="var(--coral)"/><circle cx="48" cy="38" r="2" fill="var(--yellow)"/></svg>
-          <h3>Gaming</h3>
-          <p>Unwinding with a good game (and a little competitive rage).</p>
+          <h3>Gaming</h3><p>Unwinding with a good game (and a little competitive rage).</p>
         </div>
       </div>
     </div>
@@ -474,13 +487,11 @@
       <div class="sec-head">
         <p class="eyebrow-lbl up">experience</p>
         <h2 class="up">Where I've worked.</h2>
+        <svg class="squig up crayon" style="color:var(--green)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
       </div>
       <div class="timeline">
         <div class="job up">
-          <div class="job-head">
-            <h3>Product Marketing, <span class="co">Stitchflow</span></h3>
-            <span class="when">Oct 2024 – Present</span>
-          </div>
+          <div class="job-head"><h3>Product Marketing, <span class="co">Stitchflow</span></h3><span class="when">Oct 2024 – Present</span></div>
           <ul>
             <li>Shape positioning and messaging for a technical SaaS platform, aligning content, sales enablement, and GTM to one narrative.</li>
             <li>Built content programs that published 100+ long-form articles ranking on page one, driving up to 40% of inbound demo pipeline.</li>
@@ -488,13 +499,10 @@
           </ul>
         </div>
         <div class="job up">
-          <div class="job-head">
-            <h3>Product Marketer &amp; Technical Writer, <span class="co">Zoho Corporation</span></h3>
-            <span class="when">Apr 2022 – Aug 2024</span>
-          </div>
+          <div class="job-head"><h3>Product Marketer &amp; Technical Writer, <span class="co">Zoho Corporation</span></h3><span class="when">Apr 2022 – Aug 2024</span></div>
           <ul>
             <li>Ran B2B content programs of 35+ blogs and 7 webinars, driving 10,000+ views for products with 200,000+ daily active users.</li>
-            <li>Grew website traffic 300% YoY and partnered with product, sales, and design to strengthen positioning and sales enablement.</li>
+            <li>Grew website traffic 300% YoY and partnered with product, sales, and design to strengthen positioning, sales enablement, and website content.</li>
           </ul>
         </div>
       </div>
@@ -507,13 +515,14 @@
       <span class="dood para" style="top:20px;left:8%;color:var(--purple)" data-speed="-0.05"><span class="floaty"><svg class="crayon" width="46" height="46" viewBox="0 0 24 24"><path d="M12 21 C12 21 4 15 4 9 A4 4 0 0 1 12 6.5 A4 4 0 0 1 20 9 C20 15 12 21 12 21 Z" fill="currentColor"/></svg></span></span>
       <p class="eyebrow-lbl up">say hello</p>
       <h2 class="up">Let's make something worth reading, watching, and sharing.</h2>
+      <svg class="squig up crayon" style="color:var(--sky)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
       <p class="lede up">Open to content and product marketing roles, freelance projects, and collaborations.</p>
       <div class="cta up">
         <a href="mailto:janecynthia1999@gmail.com" class="btn">Email me</a>
         <a href="Jane-Cynthia-S-Marketing.pdf" target="_blank" rel="noopener" class="link">Download résumé</a>
       </div>
       <div class="socials up">
-        <a href="mailto:janecynthia1999@gmail.com">janecynthia1999@gmail.com</a>
+        <a href="mailto:janecynthia1999@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/jane-cynthia-s/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://www.instagram.com/jane_cynthia" target="_blank" rel="noopener">Instagram</a>
       </div>
@@ -529,6 +538,7 @@
 
   <script>
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(pointer:fine)').matches;
 
     // Reveal on scroll
     const io = new IntersectionObserver((entries) => {
@@ -551,18 +561,21 @@
     }, { threshold: 0.6 });
     document.querySelectorAll('.spec .n').forEach((el) => countObs.observe(el));
 
-    // Scroll-driven: intro fade, nav show, doodle parallax
+    // Scroll-driven: intro fade, nav, parallax, progress bar
     const intro = document.getElementById('top');
-    const introPin = document.getElementById('introPin');
     const introName = document.querySelector('.intro-name');
     const introHi = document.querySelector('.intro .hi');
     const introCue = document.querySelector('.intro .cue');
+    const introPin = document.getElementById('introPin');
     const nav = document.getElementById('nav');
+    const progress = document.getElementById('progress');
     const paras = Array.from(document.querySelectorAll('.para'));
     let ticking = false;
     function update(){
       ticking = false;
       const y = window.scrollY, vh = window.innerHeight;
+      const docH = document.documentElement.scrollHeight - vh;
+      progress.style.width = (docH > 0 ? (y/docH)*100 : 0) + '%';
       if (intro && !reduce){
         const dist = intro.offsetHeight - vh;
         const p = dist > 0 ? Math.min(Math.max(y / dist, 0), 1) : 0;
@@ -580,6 +593,30 @@
     window.addEventListener('scroll', onScroll, { passive:true });
     window.addEventListener('resize', onScroll);
     update();
+
+    // 3D tilt on cards
+    if (finePointer && !reduce){
+      document.querySelectorAll('.tilt').forEach((card) => {
+        card.addEventListener('pointermove', (e) => {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left)/r.width - 0.5;
+          const py = (e.clientY - r.top)/r.height - 0.5;
+          card.style.transform = 'perspective(700px) rotateX(' + (-py*7) + 'deg) rotateY(' + (px*7) + 'deg) translateY(-6px)';
+        });
+        card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+      });
+    }
+
+    // Custom cursor
+    if (finePointer && !reduce){
+      const cur = document.createElement('div'); cur.className = 'cursor'; document.body.appendChild(cur);
+      window.addEventListener('pointermove', (e) => { cur.classList.add('on'); cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; });
+      window.addEventListener('pointerleave', () => cur.classList.remove('on'));
+      document.querySelectorAll('a, button, .card, .hobby').forEach((el) => {
+        el.addEventListener('pointerenter', () => cur.classList.add('big'));
+        el.addEventListener('pointerleave', () => cur.classList.remove('big'));
+      });
+    }
 
     // Click-to-play YouTube facades
     document.querySelectorAll('.play-btn').forEach((btn) => {
