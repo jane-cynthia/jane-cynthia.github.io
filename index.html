@@ -133,6 +133,7 @@
     #about .eyebrow-lbl{color:var(--coral)} #writing .eyebrow-lbl{color:var(--purple)}
     #casestudies .eyebrow-lbl{color:var(--green)} #webinars .eyebrow-lbl{color:var(--sky)}
     #hobbies .eyebrow-lbl{color:var(--purple)} #experience .eyebrow-lbl{color:var(--green)} #contact .eyebrow-lbl{color:var(--sky)}
+    #process .eyebrow-lbl{color:var(--sky)} #web .eyebrow-lbl{color:var(--coral)} #testimonials .eyebrow-lbl{color:var(--purple)}
     h2 { font-size:clamp(1.7rem,4vw,2.5rem); font-weight:700; letter-spacing:-0.03em; line-height:1.1; margin-bottom:6px; }
     .lede { font-size:clamp(1.05rem,2.2vw,1.4rem); color:var(--ink-dim); max-width:54ch; margin-top:14px; }
     .dark .lede { color:#a1a1a6; }
@@ -162,6 +163,23 @@
     .card .go { color:var(--blue); font-size:.95rem; font-weight:500; }
     .card .arr { display:inline-block; transition:transform .25s var(--ease); }
     .card:hover .arr { transform:translate(4px,-4px); }
+    .card .impact { font-size:.85rem; font-weight:700; color:var(--green); margin-bottom:14px; }
+    /* How I work */
+    .steps { display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+    @media (max-width:820px){ .steps{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:480px){ .steps{grid-template-columns:1fr} }
+    .step { background:var(--grey); border-radius:16px; padding:22px 18px; transition:transform .3s var(--ease); }
+    .step:hover { transform:translateY(-4px); }
+    .step .num { font-family:'Caveat',cursive; font-size:2.1rem; font-weight:700; color:var(--coral); line-height:1; }
+    .step h4 { font-size:1.02rem; font-weight:600; margin:6px 0 4px; letter-spacing:-0.01em; }
+    .step p { color:var(--ink-dim); font-size:.9rem; }
+    /* Testimonials */
+    .quotes { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    @media (max-width:720px){ .quotes{grid-template-columns:1fr} }
+    .quote { background:var(--white); border:1px solid var(--line); border-radius:18px; padding:26px; }
+    .quote .qm { font-family:Georgia,'Times New Roman',serif; font-size:3rem; color:var(--purple); line-height:.5; opacity:.4; display:block; height:24px; }
+    .quote p { color:var(--ink); font-size:1.02rem; }
+    .quote .who { color:var(--ink-dim); font-size:.88rem; margin-top:14px; }
 
     /* VIDEOS */
     .videos { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
@@ -310,16 +328,39 @@
       <h2 class="up">Marketing brain, maker's instinct.</h2>
       <svg class="squig up crayon" style="color:var(--coral)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
       <p class="up" style="margin-top:16px;">
-        I'm a <strong>content and product marketer</strong> based in Chennai. I shape positioning and messaging,
-        build content programs that rank and convert, and grow founder brands from zero. Lately I've been building
-        <strong>AI systems</strong> that ghostwrite founder thought leadership in each person's authentic voice and
-        monitor social conversations at scale.
+        I'm a content and product marketer in Chennai. Day to day, I write the blogs, web pages, and case studies,
+        work out how a company should sound, and run the calendar and systems that keep everything moving. My
+        background is in <strong>technical writing</strong>, so I'm good at taking something complicated and making it
+        genuinely readable.
       </p>
       <p class="up" style="margin-top:16px;">
-        I love working <strong>across teams, top to bottom</strong> — partnering with product, sales, design, and
-        leadership to ship everything from blogs and case studies to <strong>full website content</strong>. Good
-        marketing should be worth <strong>reading, watching, and sharing</strong>.
+        Lately I've been building the AI side of content. I made tools that draft in a founder's own voice instead of
+        the usual generic AI output, plus a setup that tracks social conversations so we can join the right ones at the
+        right time. It lets a small team ship a lot without sounding like a robot.
       </p>
+      <p class="up" style="margin-top:16px;">
+        I've worked with just about every team to get content out, from product and sales to design and the founders
+        themselves. And I like the craft for its own sake, whether that's a landing page headline or a video that makes
+        people laugh.
+      </p>
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section class="pad" id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow-lbl up">how I work</p>
+        <h2 class="up">A simple system behind every piece.</h2>
+        <svg class="squig up crayon" style="color:var(--sky)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <div class="steps">
+        <div class="step up"><div class="num">1</div><h4>Brief</h4><p>Nail the reader, the one message, and the goal before writing.</p></div>
+        <div class="step up"><div class="num">2</div><h4>Draft</h4><p>Get the argument down, structure first.</p></div>
+        <div class="step up"><div class="num">3</div><h4>Self-edit</h4><p>Cut fluff, sharpen specifics, read it aloud.</p></div>
+        <div class="step up"><div class="num">4</div><h4>Publish + SEO</h4><p>Ship with clean on-page SEO and internal links.</p></div>
+        <div class="step up"><div class="num">5</div><h4>Measure</h4><p>Track what worked, refresh what didn't.</p></div>
+      </div>
     </div>
   </section>
 
@@ -355,19 +396,51 @@
           <img class="logo" src="images/logo-stitchflow.png" alt="Stitchflow logo" loading="lazy">
           <div class="pub">Stitchflow</div>
           <div class="desc">Long-form content on SaaS governance, IT operations, and access management.</div>
+          <div class="impact">✦ Flagship pillar drives steady traffic and partnership requests</div>
           <div class="go">Read on Stitchflow <span class="arr">↗</span></div>
         </a>
         <a class="card tilt up" style="--acc:var(--coral)" href="https://www.zoho.com/blog/author/janecynthia-sh" target="_blank" rel="noopener">
           <img class="logo" src="images/logo-zoho.png" alt="Zoho logo" loading="lazy">
           <div class="pub">Zoho</div>
           <div class="desc">B2B product blogs and customer stories across the Zoho suite.</div>
+          <div class="impact">✦ 35+ blogs and 7 webinars, 10,000+ views</div>
           <div class="go">Read on Zoho <span class="arr">↗</span></div>
         </a>
         <a class="card tilt up" style="--acc:var(--green)" href="https://www.manageengine.com/analytics-plus/it-analytics-blogs/author/janecynthia" target="_blank" rel="noopener">
           <img class="logo" src="images/logo-manageengine.png" alt="ManageEngine logo" loading="lazy">
           <div class="pub">ManageEngine</div>
           <div class="desc">IT and analytics content for Analytics Plus, from ebooks to competitive pieces.</div>
+          <div class="impact">✦ Content that grew organic traffic 300% YoY</div>
           <div class="go">Read on ManageEngine <span class="arr">↗</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEB & LANDING PAGES -->
+  <section class="pad soft" id="web">
+    <div class="wrap">
+      <span class="dood para" style="top:30px;right:24px;color:var(--coral)" data-speed="-0.05"><span class="floaty b"><svg class="crayon" width="42" height="42" viewBox="0 0 24 24"><path d="M12 2 L14.5 9.5 L22 12 L14.5 14.5 L12 22 L9.5 14.5 L2 12 L9.5 9.5 Z" fill="currentColor"/></svg></span></span>
+      <div class="sec-head">
+        <p class="eyebrow-lbl up">web &amp; landing pages</p>
+        <h2 class="up">Copy built to convert.</h2>
+        <svg class="squig up crayon" style="color:var(--coral)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        <p class="lede up">Landing and web pages where every section leads with the outcome.</p>
+      </div>
+      <div class="cards">
+        <a class="card tilt up" style="--acc:var(--sky)" href="https://www.stitchflow.com/how-it-works" target="_blank" rel="noopener">
+          <img class="logo" src="images/logo-stitchflow.png" alt="Stitchflow logo" loading="lazy">
+          <div class="pub">Stitchflow — How It Works</div>
+          <div class="desc">Product landing page, written outcome-first with specific, proof-driven copy.</div>
+          <div class="impact">✦ Outcome-led (e.g., 45 min → 47 sec), one clear action</div>
+          <div class="go">View page <span class="arr">↗</span></div>
+        </a>
+        <a class="card tilt up" style="--acc:var(--coral)" href="https://www.zoho.com/cliq/2023.html" target="_blank" rel="noopener">
+          <img class="logo" src="images/logo-zoho.png" alt="Zoho logo" loading="lazy">
+          <div class="pub">Zoho Cliq — 2023</div>
+          <div class="desc">Year-in-review campaign page, organized by theme so readers find what matters.</div>
+          <div class="impact">✦ Social proof and specifics, in a warm, human tone</div>
+          <div class="go">View page <span class="arr">↗</span></div>
         </a>
       </div>
     </div>
@@ -509,8 +582,31 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section class="pad soft" id="testimonials">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow-lbl up">kind words</p>
+        <h2 class="up">What people I've worked with say.</h2>
+        <svg class="squig up crayon" style="color:var(--purple)" width="150" height="14" viewBox="0 0 150 14"><path class="sp" d="M2 8 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+      </div>
+      <div class="quotes">
+        <figure class="quote up">
+          <span class="qm">&ldquo;</span>
+          <p>Jane is proactive, dependable, and deeply invested in delivering results. She brings remarkable clarity to her work, turning even complex or technical topics into content that's both engaging and easy to understand. Anyone looking for a skilled product marketer or content writer with excellent communication and team spirit would be lucky to work with her.</p>
+          <div class="who">— LinkedIn recommendation</div>
+        </figure>
+        <figure class="quote up">
+          <span class="qm">&ldquo;</span>
+          <p>Jane is a team asset and a joy to share a workspace with. With her product marketing skills, honing product-market fit and spearheading go-to-market strategies, she can truly transform any company. She also has a knack for storytelling to simplify complex ideas. I wish her well in all her future endeavours.</p>
+          <div class="who">— LinkedIn recommendation</div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
-  <section class="pad soft contact" id="contact">
+  <section class="pad contact" id="contact">
     <div class="wrap">
       <span class="dood para" style="top:20px;left:8%;color:var(--purple)" data-speed="-0.05"><span class="floaty"><svg class="crayon" width="46" height="46" viewBox="0 0 24 24"><path d="M12 21 C12 21 4 15 4 9 A4 4 0 0 1 12 6.5 A4 4 0 0 1 20 9 C20 15 12 21 12 21 Z" fill="currentColor"/></svg></span></span>
       <p class="eyebrow-lbl up">say hello</p>
